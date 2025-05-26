@@ -11,6 +11,10 @@ router
     .route("/:productId([0-9]+)")
     .get(controller.read)
     .all(methodNotAllowed);
+router
+    .route("/price-summary")
+    .get(controller.listPriceSummary)
+    .all(methodNotAllowed);
 
 
 module.exports = router;
