@@ -20,7 +20,12 @@ async function productExists(req, res, next) {
   next({ status: 404, message: `Product cannot be found.` });
 }
 
+async function listOutOfStockCount(req, res, next) {
+  res.json({ data: await productsService.listOutOfStockCount() });
+}
+
 module.exports = {
   read: [asyncErrorBoundary(productExists), read],
   list: asyncErrorBoundary(list),
+  listOutOfStockCount: asyncErrorBoundary(listOutOfStockCount),
 };
